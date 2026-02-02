@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HITEC University - Shaping Tomorrow's Tech Leaders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E4C1;
+            --dark: #0A0A0F;
+            --charcoal: #1A1A24;
+            --white: #FFFFFF;
+            --gray: #8B8B9E;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0A0A0F 0%, #1A0F2E 50%, #0A0A0F 100%);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            50% { transform: translateY(-50vh); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span { color: var(--gold); }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 7rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease both;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta {
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, var(--gold), #B8941E);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
+            animation: fadeInUp 1s ease 0.4s both;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 80px rgba(212, 175, 55, 0.6);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stats {
+            display: flex;
+            gap: 4rem;
+            margin-top: 4rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(26, 26, 36, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            padding: 3rem 2rem;
+            background: rgba(26, 26, 36, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            background: rgba(26, 26, 36, 0.9);
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 1rem 0;
+            color: var(--gold);
+        }
+
+        .card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 3rem 0;
+            background: rgba(26, 26, 36, 0.6);
+        }
+
+        th, td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        th {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group { margin-bottom: 2rem; }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(26, 26, 36, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--white);
+            font-family: 'Raleway', sans-serif;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        button {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--gold), #B8941E);
+            color: var(--dark);
+            border: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        button:hover { transform: translateY(-3px); }
+
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .stats { flex-direction: column; gap: 2rem; }
+            .nav-links { display: none; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <nav>
+        <div class="nav-content">
+            <div class="logo">HITEC<span>HUB</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>BUILD YOUR TECH CAREER</h1>
+        <p>Where Innovation Meets Education - Join 5000+ Students</p>
+        <a href="#services" class="cta">START LEARNING TODAY</a>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">ACTIVE LEARNERS</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">EXPERT COURSES</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">JOB PLACEMENT</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">WHO <span>WE ARE</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>What Drives Us</h3>
+                <p>We believe everyone deserves access to quality tech education. Our mission is to help you master the skills that matter and land your dream job in the tech industry.</p>
+            </div>
+            <div class="card">
+                <h3>Where We're Headed</h3>
+                <p>Becoming Pakistan's most trusted name in technology education. We're building a community of innovators who will shape the future of tech.</p>
+            </div>
+            <div class="card">
+                <h3>What We Stand For</h3>
+                <p>Quality over quantity. Real projects over theory. Student success over everything. These aren't just words - they're promises we keep every single day.</p>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin: 4rem 0 2rem; font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold);">Meet Our Team</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>ROLE</th>
+                    <th>SPECIALTY</th>
+                    <th>BACKGROUND</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dr.Muhammad khalid</td>
+                    <td>Batch Advisor </td>
+                    <td>Computer Science</td>
+                    <td>5+ years at Google & Microsoft</td>
+                </tr>
+                <tr>
+                    <td>Dr.Muhammad TAj</td>
+                    <td>Head OF Department</td>
+                    <td>computer Science</td>
+                    <td>12+ years at Microsoft and Amazon AWS</td>
+                </tr>
+                <tr>
+                    <td>Dr.Rashid Mehmood</td>
+                    <td>Senior Faculty Member</td>
+                    <td>Mathematics and Algebra</td>
+                    <td>10+ years in EdTech and Research</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">WHAT YOU'LL <span>LEARN</span></h2>
+        <div class="grid">
+            <div class="card">
+                <div style="font-size: 3rem;">💻</div>
+                <h3>Web Development</h3>
+                <p>Build real websites from scratch. Learn HTML, CSS, JavaScript, and React. By the end, you'll have 5+ projects for your portfolio.</p>
+                <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">25099pkr - 12 weeks</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 3rem;">🤖</div>
+                <h3>AI & Data Science</h3>
+                <p>Work with actual data sets and build AI models. Python, TensorFlow, and machine learning - all with hands-on projects you'll be proud to show.</p>
+                <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">20000pkr- 16 weeks</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 3rem;">📱</div>
+                <h3>Mobile App Creation</h3>
+                <p>Launch your own apps on iOS and Android. Learn React Native and Flutter while building apps people actually want to use.</p>
+                <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">10000pkr - 10 weeks</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 3rem;">☁️</div>
+                <h3>Cloud Engineering</h3>
+                <p>Master AWS, Azure, and Google Cloud. Get certified and learn to build scalable systems that handle millions of users.</p>
+                <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">12099pkr - 14 weeks</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 3rem;">🔒</div>
+                <h3>Cybersecurity Pro</h3>
+                <p>Protect companies from hackers. Learn ethical hacking, network defense, and become the person everyone calls when things go wrong.</p>
+                <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">10099pkr - 12 weeks</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 3rem;">🎨</div>
+                <h3>UI/UX Design</h3>
+                <p>Design apps that people love to use. Master Figma and Adobe XD while learning what makes great design actually work.</p>
+                <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">8099pkr - 8 weeks</p>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin: 4rem 0 2rem; font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold);">Find Your Perfect Course</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>PROGRAM</th>
+                    <th>TIME COMMITMENT</th>
+                    <th>WHO IT'S FOR</th>
+                    <th>INVESTMENT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Web Development</td>
+                    <td>12 weeks</td>
+                    <td>Complete Beginners to Pros</td>
+                    <td>25099pkr</td>
+                </tr>
+                <tr>
+                    <td>AI & Data Science</td>
+                    <td>16 weeks</td>
+                    <td>Some Coding Experience</td>
+                    <td>20000pkr</td>
+                </tr>
+                <tr>
+                    <td>Mobile Development</td>
+                    <td>10 weeks</td>
+                    <td>Beginners Welcome</td>
+                    <td>10000pkr</td>
+                </tr>
+                <tr>
+                    <td>Cloud Computing</td>
+                    <td>14 weeks</td>
+                    <td>Tech Background Helpful</td>
+                    <td>12099pkr</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">LET'S <span>TALK</span></h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">YOUR NAME </label>
+                <input type="text" id="name" required placeholder="What should we call you?">
+            </div>
+            <div class="form-group">
+                <label for="email">EMAIL </label>
+                <input type="email" id="email" required placeholder="Where can we reach you?">
+            </div>
+            <div class="form-group">
+                <label for="phone">PHONE (OPTIONAL)</label>
+                <input type="tel" id="phone" placeholder="Want us to call you back?">
+            </div>
+            <div class="form-group">
+                <label for="subject">WHAT'S THIS ABOUT? </label>
+                <select id="subject" required>
+                    <option value="">Choose one...</option>
+                    <option value="general">Just browsing</option>
+                    <option value="courses">Tell me about courses</option>
+                    <option value="enrollment">I'm ready to enroll!</option>
+                    <option value="support">Need some help</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Feed back </label>
+                <textarea id="message" rows="6" required placeholder="What's on your mind?"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="logo" style="margin-bottom: 1rem;">HITEC<span>HUB</span></div>
+        <p>© 2026 HITEC University. Building Pakistan's tech future, one student at a time.</p>
+        <p style="margin-top: 1rem;">Made by usman for CS-106L Project</p>
+    </footer>
+
+    <script>
+        // Create floating particles
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'particle';
+            dot.style.left = Math.random() * 100 + '%';
+            dot.style.animationDelay = Math.random() * 10 + 's';
+            dot.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            container.appendChild(dot);
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(link.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Handle contact form
+        document.getElementById('contactForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const userName = document.getElementById('name').value;
+            const userEmail = document.getElementById('email').value;
+            alert(`Hey ${userName}! Thanks for reaching out. We'll get back to you at ${userEmail} real soon!`);
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
